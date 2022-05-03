@@ -19,13 +19,13 @@ diagnostics.post('/', (req, res) => {
   const newDiagnostic = {
     time: timestamp.now(),
     error_id: uuidv4(),
-    errors,
+    errors: errors,
   };
 
   readAndAppend(newDiagnostic, './db/diagnostics.json');
   const response = {
     status: 'success',
-    body: newFeedback,
+    body: newDiagnostic,
   };
 
   res.json(response);
