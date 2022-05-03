@@ -3,12 +3,14 @@ const { v4: uuidv4 } = require('uuid');
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
 // GET Route for retrieving all the feedback
-fb.get('/', (req, res) =>
-  readFromFile('./db/feedback.json').then((data) => res.json(JSON.parse(data)))
-);
+fb.get('/', (req, res) => {
+  console.info(`${req.method} request received to feedback`);
+  readFromFile('./db/feedback.json').then((data) => res.json(JSON.parse(data)));
+});
 
 // POST Route for submitting feedback
 fb.post('/', (req, res) => {
+  console.info(`${req.method} request received to feedback`);
   // Destructuring assignment for the items in req.body
   const { email, feedbackType, feedback } = req.body;
 
