@@ -127,7 +127,15 @@ const submitDiagnostics = (submissionObj) => {
   console.info(
     '⚠️ Create the logic for the fetch POST request in scripts/index.js'
   );
-  alert('Add your logic to scripts/index.js');
+  fetch('/api/diagnostics', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(submissionObj),
+  }).catch((error) => {
+    console.error('Error:', error);
+  });
 };
 
 // Function to handle when a user submits the feedback form
